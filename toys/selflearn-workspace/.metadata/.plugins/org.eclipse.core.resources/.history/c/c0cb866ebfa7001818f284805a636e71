@@ -1,0 +1,14 @@
+package self.j8;
+
+import java.util.Optional;
+
+public class OptionalScratch {
+	Optional<String> stringOpt = Optional.of("foobar");
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		final OptionalScratch instance = new OptionalScratch();
+		instance.stringOpt.ifPresent(name -> System.out.println(name));
+	}
+
+}

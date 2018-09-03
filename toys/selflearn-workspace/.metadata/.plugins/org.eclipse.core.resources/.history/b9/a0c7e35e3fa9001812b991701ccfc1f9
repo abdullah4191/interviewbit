@@ -1,0 +1,27 @@
+package self.j8;
+
+import java.util.Optional;
+
+public class OptionalScratch {
+	Optional<String> stringOpt = Optional.of("foobar");
+	Inner innerInstance = new Inner();
+	
+	static {
+		innerins
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		final OptionalScratch instance = new OptionalScratch();
+		instance.stringOpt.ifPresent(name -> System.out.println(name));
+		instance.stringOpt.map(() -> System.out.println());
+	}
+	
+	public static class Inner{
+		private String name;
+		private int salary;
+		
+	}
+
+}

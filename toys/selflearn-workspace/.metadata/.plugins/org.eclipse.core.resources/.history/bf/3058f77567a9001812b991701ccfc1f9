@@ -1,0 +1,43 @@
+package self.j8;
+
+import java.util.Optional;
+
+public class OptionalScratch {
+	Optional<String> stringOpt = Optional.of("foobar");
+	Inner innerInstance = new Inner();
+	Optional<Inner> innerInstanceOpt = Optional.of(innerInstance);
+
+	public OptionalScratch() {
+		innerInstance.name = "firstName";
+		innerInstance.salary = 1000;
+	}
+
+	public void setInnerInstance(Inner innerInstance) {
+		this.innerInstance = innerInstance;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		final OptionalScratch instance = new OptionalScratch();
+		instance.stringOpt.ifPresent(name -> System.out.println(name));
+		// instance.stringOpt.map(() -> System.out.println());
+
+		String name = instance.innerInstanceOpt.map(Inner::getName).orElse("Not Available");
+		System.out.println(name);
+	}
+
+	public static class Inner {
+		private String name;
+		private int salary;
+
+		void printName() {
+			System.out.println(name);
+		}
+
+		public String getName() {
+			return name;
+		}
+
+	}
+
+}
