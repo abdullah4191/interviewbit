@@ -1,0 +1,120 @@
+package test1;
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+public class LinkedListLength {
+
+	/*
+	 * public int solution(IntList L) { // write your code in Java SE 8
+	 * 
+	 * if (L == null) return 0; int size = 1; while (L.next != null) { size++; L =
+	 * L.next; } return size; }
+	 */
+
+	static String solution(String S) {
+		int[] occurrences = new int[26];
+		for (char ch : S.toCharArray()) {
+			occurrences[ch - 'a']++;
+		}
+
+		char best_char = 'a';
+		int best_res = occurrences[0];
+
+		for (int i = 1; i < 26; i++) {
+			if (occurrences[i] > best_res) {
+				System.out.println(best_res);
+				System.out.println(occurrences[i]);
+				best_char = (char) ((int) 'a' + i);
+				best_res = occurrences[i];
+			}
+		}
+
+		return Character.toString(best_char);
+	}
+
+	public static int min(int[] A) {
+		if (A.length > 21)
+			return 25;
+
+		boolean[] monthTrip = new boolean[31];
+		IntStream.of(A).forEach(i -> monthTrip[i] = true);
+		int[] minCostPerDay = new int[31];
+		for (int i = 1; i < 31; i++) {
+			if (!monthTrip[i]) {
+				minCostPerDay[i] = minCostPerDay[i - 1];
+				continue;
+			}
+
+			int minCost;
+			if (getDayCounInRange(monthTrip, i) > 3) {
+				minCost = minCostPerDay[i - 1] + 7;
+				i += 6;
+			} else {
+				minCost = minCostPerDay[i - 1] + 2;
+			}
+			minCostPerDay[i] = minCost;
+		}
+		return minCostPerDay[30];
+	}
+
+	static int getDayCounInRange(final boolean[] monthTrip, final int index) {
+		int count = 1;
+
+		for (int i = index + 1; i < 31 && i < index + 6; i++) {
+			if (monthTrip[i])
+				count++;
+		}
+		return count;
+	}
+
+	public static final String[] SEASON = { "WINTER", "SPRING", "SUMMER", "AUTUMN" };
+
+	static String getSeason(int[] T) {
+
+		int[] Amp = new int[4];
+
+		int seasonLength = T.length / 4;
+		for (int i = 0; i < 4; i++) {
+			System.out.println("linit " + new Long(i * seasonLength) + new Long(seasonLength));
+			Amp[i] = getAmp(
+					IntStream.of(T).skip(i * seasonLength).limit((long) (i * seasonLength) + (seasonLength)).toArray());
+			System.out.println(Amp[i]);
+		}
+		int maxAmp = Amp[0];
+		String result = SEASON[0];
+		for (int i = 1; i < 4; i++) {
+			if (Amp[i] > maxAmp) {
+				maxAmp = Amp[i];
+				result = SEASON[i];
+			}
+		}
+		return result;
+	}
+
+	static int getAmp(int[] A) {
+		System.out.println("A[0] " + A[A.length - 1]);
+		int minTemp = A[0], maxTemp = A[0];
+		for (int i : A) {
+			minTemp = Math.min(minTemp, i);
+			System.out.println("minTemp" + minTemp);
+			maxTemp = Math.max(maxTemp, i);
+			System.out.println("maxTemp" + maxTemp);
+		}
+		return maxTemp - minTemp;
+	}
+
+	public static void main(String[] args) {
+		// System.out.println(solution("zzaacc"));
+		System.out.println(min(new int[] { 1, 2, 4, 5, 7, 29, 30 }));
+		System.out.println(min(new int[] { 1, 7, 8, 9, 10 }));
+		System.out.println(min(new int[] { 1, 7, 8, 9, 10, 15 }));
+		System.out.println(min(
+				new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 29, 30 }));
+
+		int[] T = new int[] { 2, -3, 3, 1, 10, 8, 2, 5, 13, -5, 3, -18 };
+		System.out.println(getSeason(T));
+
+	}
+
+}

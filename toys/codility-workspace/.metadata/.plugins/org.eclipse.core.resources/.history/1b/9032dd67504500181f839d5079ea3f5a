@@ -1,0 +1,29 @@
+package test1;
+
+import java.util.Arrays;
+
+class Solution {
+	public int solution() {
+		int[] A = { 1, 2, 3 };
+		int result = 1;
+		boolean found = false;
+		A = Arrays.stream(A).filter(x -> x > 0).sorted().distinct().toArray();
+		System.out.println(Arrays.toString(A));
+		for (int i = 0; i < A.length; i++) {
+			result = i + 1;
+			if (result != A[i]) {
+				found = true;
+				break;
+			}
+		}
+		if (!found && result == A.length) {
+			result++;
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		Solution s = new Solution();
+		System.out.println(s.solution());
+	}
+}

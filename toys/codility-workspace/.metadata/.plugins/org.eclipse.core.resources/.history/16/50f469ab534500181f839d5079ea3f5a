@@ -1,0 +1,54 @@
+package test1;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+class Solution {
+	public int solution() {
+		int[] A = { 1, 2, 3 };
+		int result = 1;
+		boolean found = false;
+		A = Arrays.stream(A).filter(x -> x > 0).sorted().distinct().toArray();
+		System.out.println(Arrays.toString(A));
+		for (int i = 0; i < A.length; i++) {
+			result = i + 1;
+			if (result != A[i]) {
+				found = true;
+				break;
+			}
+		}
+		if (!found && result == A.length) {
+			result++;
+		}
+		return result;
+	}
+
+	public int solution2() {
+		int[] A = { 1, 2, 3 };
+		int result = 1;
+		SortedSet<Integer> set = new TreeSet<Integer>();
+		set.addAll(Arrays.stream(A).boxed().collect(Collectors.toList()));
+		set.removeIf(x -> x.intValue() < 1);
+		for (int i = 1; i < set.size(); i++) {
+			result=i;
+			if (!set.contains(Integer.valueOf(i))) {
+				return i;
+			}
+		}
+
+		return result;
+	}
+
+	public static void main(String[] args) {
+		Solution s = new Solution();
+		System.out.println(s.solution2());
+	}
+}
