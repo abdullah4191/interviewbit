@@ -1,0 +1,104 @@
+package com.devskiller.orders;
+
+import com.devskiller.orders.model.*;
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class OrdersAnalyzer {
+
+	/**
+	 * Should return at most three most popular products. Most popular product is
+	 * the product that have the most occurrences in given orders (ignoring product
+	 * quantity). If two products have the same popularity, then products should be
+	 * ordered by name
+	 *
+	 * @param orders
+	 *            orders stream
+	 * @return list with up to three most popular products
+	 */
+	public List<Product> findThreeMostPopularProducts(Stream<Order> orders) {
+		Map<Product, Integer> result = new HashMap<Product, Integer>();
+		Map<Integer, List<Product>> sortedResult = new HashMap<Integer, List<Product>>();
+		List<Product> sortedResultList = new ArrayList<Product>();
+
+		orders.forEach(o -> getOrderItemsMapForOrder(o).forEach((k, v) -> {
+			// System.out.println("key " + k.getName());
+			result.merge(k, 1, (v1, v2) -> {
+
+				// System.out.println("v1:" + v1 + " v2:" + v2);
+				return v2 + v1;
+			});
+		}));
+
+		System.out.println("------------------------------------UNSortedMap--------------");
+		for (Map.Entry<Product, Integer> entry : result.entrySet()) {
+			System.out.println("product : " + entry.getKey().getName() + " count" + entry.getValue());
+		}
+		System.out.println("------------------------------------UNSortedMap--------------");
+		result.entrySet().stream().sorted(Map.Entry.<Product, Integer>comparingByValue((v1, v2) -> {
+			// System.out.println("v1:" + v1 + " v2:" + v2);
+			return v1 - v2;
+		}).reversed()).forEachOrdered(x -> {
+			sortedResultList.add(x.getKey());
+			System.out.println("list item:");
+			System.out.println(x.getKey().getName() + " -> " + x.getValue());
+			sortedResult.merge(x.getValue(), new ArrayList<Product>(Arrays.asList(new Product[] { x.getKey() })),
+					(v1, v2) -> {
+						v1.add(x.getKey());
+						System.out.println("sortedResult v1");
+						System.out.println(v1.stream().sorted((o1, o2) -> o1.getName().compareTo(o2.getName()))
+								.collect(Collectors.toList()));
+						return v1.stream().sorted((o1, o2) -> o1.getName().compareTo(o2.getName()))
+								.collect(Collectors.toList());
+					});
+			// sortedResult.put(x.getValue(), x.getValue());
+		});
+
+		System.out.println("------------------------------------SortedMap--------------");
+		/*
+		 * for (Map.Entry<Integer, Product> entry : sortedResult.entrySet()) {
+		 * System.out.println("product : " + entry.getKey().getName() + " count" +
+		 * entry.getValue()); } /* System.out.println(
+		 * "------------------------------------SortedList--------------"); for
+		 * (Map.Entry<Product, Integer> entry : sortedResult.entrySet()) {
+		 * System.out.println("product : " + entry.getKey().getName() + " count" +
+		 * entry.getValue()); }
+		 */
+
+		// return result.entrySet().stream().sorted(Map.Entry.<Product,
+		// Integer>comparingByValue().reversed())..limit(3).collect(Collectors.toList());
+		// return sortedResult.keySet().stream().limit(3).collect(Collectors.toList());
+		// Collections.reverse(sortedResultList);
+		return sortedResult.values().stream().flatMap(List::stream).limit(3).collect(Collectors.toList());
+		// return sortedResultList.stream().limit(3).collect(Collectors.toList());
+	}
+
+	private Map<Product, OrderLine> getOrderItemsMapForOrder(Order order) {
+		System.out
+				.println("------------------------------------getOrderItemsMapForOrder--------------" + order.getId());
+		Map<Product, OrderLine> result = order.getOrderLines().stream()
+				.collect(Collectors.toMap(OrderLine::getProduct, Function.identity()));
+		for (Map.Entry<Product, OrderLine> entry : result.entrySet()) {
+			System.out.println("product : " + entry.getKey().getName());
+		}
+		return order.getOrderLines().stream().collect(Collectors.toMap(OrderLine::getProduct, Function.identity()));
+	}
+
+	/**
+	 * Should return the most valuable customer, that is the customer that has the
+	 * highest value of all placed orders. If two customers have the same orders
+	 * value, then any of them should be returned.
+	 *
+	 * @param orders
+	 *            orders stream
+	 * @return Optional of most valuable customer
+	 */
+	public Optional<Customer> findMostValuableCustomer(Stream<Order> orders) {
+		return  Optional<Customer>("xyz", "Max", "King"); 
+		//return Optional.empty();
+	}
+
+}

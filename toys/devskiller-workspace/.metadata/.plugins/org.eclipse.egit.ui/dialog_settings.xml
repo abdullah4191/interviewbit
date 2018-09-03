@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="EGit.KnownHosts">
+		<item value="bitbucket.org"/>
+		<item value="github.com"/>
+		<item value="git.eclipse.org"/>
+		<item value="git.devskiller.com"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://git.devskiller.com/fe48b6c5-3209-430c-98fc-52aaee526708.git"/>
+		<item value="https://git.devskiller.com/7e2e1b19-b0ea-47ca-a854-a96bd82b8b55.git"/>
+		<item value="https://git.devskiller.com/167c6cf3-cae0-45a0-b457-2f1a8cd9a877.git"/>
+		<item value="https://git.devskiller.com/982395a8-8800-4bad-8c4a-860e080b025f.git"/>
+		<item value="https://git.devskiller.com/fae1241c-c3a8-466a-8f52-ea03d03bcff5.git"/>
+	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="abdullah4191 &lt;abdullah.lubbadeh@gmail.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="abdullah4191 &lt;abdullah.lubbadeh@gmail.com&gt;"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item value="656" key="DIALOG_WIDTH"/>
+		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="466" key="DIALOG_HEIGHT"/>
+		<item value="635" key="DIALOG_X_ORIGIN"/>
+		<item value="212" key="DIALOG_Y_ORIGIN"/>
+		<list key="sashWeights">
+			<item value="600"/>
+			<item value="400"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+		<item value="788" key="DIALOG_X_ORIGIN"/>
+		<item value="377" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="/home/abdullah4191/toys/devskiller-workspace/test/.git">
+			<item value="empty"/>
+		</list>
+		<list key="/home/abdullah4191/git/7e2e1b19-b0ea-47ca-a854-a96bd82b8b55/.git">
+			<item value="empty"/>
+		</list>
+		<list key="/home/abdullah4191/git/982395a8-8800-4bad-8c4a-860e080b025f/.git">
+			<item value="empty"/>
+		</list>
+		<list key="/home/abdullah4191/git/167c6cf3-cae0-45a0-b457-2f1a8cd9a877/.git">
+			<item value="empty"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item value="200,200" key="STAGING_SASH_FORM_WEIGHT"/>
+		<item value="false" key="sortItemState"/>
+		<item value="200,200" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
+	</section>
+</section>

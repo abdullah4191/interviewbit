@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/abdullah4191/git/fe48b6c5-3209-430c-98fc-52aaee526708"/>
+		<item value="/home/abdullah4191/git/7e2e1b19-b0ea-47ca-a854-a96bd82b8b55"/>
+		<item value="/home/abdullah4191/git/167c6cf3-cae0-45a0-b457-2f1a8cd9a877"/>
+		<item value="/home/abdullah4191/git/982395a8-8800-4bad-8c4a-860e080b025f"/>
+		<item value="/home/abdullah4191/toys/devskiller-workspace/test"/>
+	</list>
+	<section name="CleanDialogSettings">
+		<item value="569" key="DIALOG_WIDTH"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="427" key="DIALOG_HEIGHT"/>
+		<item value="679" key="DIALOG_X_ORIGIN"/>
+		<item value="265" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
+	</section>
+</section>
