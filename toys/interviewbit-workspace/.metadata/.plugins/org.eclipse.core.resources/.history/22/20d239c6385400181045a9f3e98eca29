@@ -1,0 +1,46 @@
+package codeScratch;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class AllFactors {
+	public int[] allFactors(int A) {
+		int[] result = new int[A];
+		List<Integer> Arr = new ArrayList<Integer>();
+		for (int i = 2; i <= Math.sqrt(A); i++) {
+			if (A % i == 0) {
+				result[i] = i;
+				if (i != Math.sqrt(A)) {
+					result[A / i] = A / i;
+				}
+			}
+		}
+		Arr.add(1);
+		Arr.addAll(IntStream.of(result).boxed().filter(i -> i > 0).collect(Collectors.toList()));
+		Arr.add(A);
+		/*result[0] = 1;
+		int index = 2;
+		for (int k = 2; k < A; k++) {
+			if (result[k] != 0) {
+				result[index++] = result[k];
+				result[k] = 0;
+			}
+		}
+		result[result.length - 1] = A;
+		for (int i = 0; i < result.length; i++) {
+			if (result[i] != 0)
+				System.out.println(result[i]);
+		}*/
+		System.out.println(Arr);
+		return result;
+	}
+
+	public static void main(String[] args) {
+		AllFactors instance = new AllFactors();
+		// System.out.println(pretty.prettyPrint(3));
+		instance.allFactors(85463);
+	}
+}

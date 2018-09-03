@@ -1,0 +1,21 @@
+package codeScratch;
+
+public class PowerFunction {
+
+	double power(int base, int power) {
+		double result = power > 0 ? base : 1;
+		for (int i = 1; i < power; i++) {
+			result *= (double) base;
+		}
+
+		return result;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PowerFunction instance = new PowerFunction();
+		System.out.println(instance.power(2, 50));
+
+	}
+
+}

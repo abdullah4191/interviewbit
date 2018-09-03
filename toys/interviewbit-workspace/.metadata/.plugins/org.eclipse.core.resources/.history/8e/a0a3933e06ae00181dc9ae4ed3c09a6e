@@ -1,0 +1,14 @@
+package codeScratch;
+
+public class MinimumCharToPalindrom {
+
+	public static int get(String input) {
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		String input="ABC";
+		System.out.println(get(input));
+	}
+
+}

@@ -1,0 +1,30 @@
+package codeScratch;
+
+import java.util.Arrays;
+
+public class LengthOfLastWord {
+	public int get(String input) {
+		String[] wordList = input.split(" ");
+		int count = wordList.length;
+		if (count > 0) {
+			return Arrays.asList(wordList).get(count - 1).trim().length();
+		}
+
+		return 0;
+	}
+
+	int get2(String input) {
+		char c = input.charAt(input.length() - 1);
+		int count = 0;
+		while (Character.isAlphabetic(c)) {
+			count++;
+		}
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		String input = "foo baar  ";
+		System.out.println(new LengthOfLastWord().get(input));
+	}
+
+}

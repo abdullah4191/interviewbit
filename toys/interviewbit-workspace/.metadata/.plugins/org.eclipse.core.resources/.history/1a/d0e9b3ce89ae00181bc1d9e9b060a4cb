@@ -1,0 +1,90 @@
+package codeScratch;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
+import java.util.stream.Collector.Characteristics;
+import java.util.stream.Stream;;
+
+public class MinimumCharToPalindrom {
+
+	public static int get(String input) {
+		Stack<Character> pal = new Stack<Character>();
+
+		for (Character c : input.toCharArray()) {
+			Character peak = pal.isEmpty() ? null : pal.pop();
+			System.out.println("Peak: " + peak);
+			if (!c.equals(peak)) {
+				pal.push(c);
+			} else {
+				if (peak != null)
+					pal.push(peak);
+				pal.push(c);
+			}
+			//
+		}
+
+		return pal.size();
+	}
+
+	public static int get2(String input) {
+		List<Character> pal = new LinkedList<Character>();
+		for (Character c : input.toCharArray()) {
+			pal.add(c);
+		}
+
+		int count = 0;
+		// System.out.println("initial count " + count);
+		while (pal.size() > 1) {
+			// System.out.println(pal.toString());
+			// System.out.println("count: " + count);
+			// System.out.println(pal.size());
+			if (pal.get(0).equals(pal.get(pal.size() - 1))) {
+				// System.out.println("first element " + pal.get(0));
+				// System.out.println("last element " + pal.get(pal.size() - 1));
+				pal.remove(0);
+				pal.remove(pal.size() - 1);
+
+			} else {
+				// System.out.println("only last element " + pal.get(pal.size() - 1));
+				pal.remove(pal.size() - 1);
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+	public static int get3(String input) {
+		int count = 0;
+		while (!PalindromeString.istPalindrom(input)) {
+			input = input.substring(0, input.length() - 1);
+			count++;
+		}
+		return count;
+	}
+
+	public static void main(String[] args) {
+		// ABC =>CBABC
+		// AACECAAAA
+
+		String input = "ABCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC";
+		long startTime = System.currentTimeMillis();
+		int count = Math.min(get3(input), get3(new StringBuilder(input).reverse().toString()));
+		long stopTime = System.currentTimeMillis();
+		System.out.println("count " + count);
+		System.out.println(stopTime - startTime);
+
+		startTime = System.currentTimeMillis();
+		count = Math.min(get2(input), get2(new StringBuilder(input).reverse().toString()));
+		stopTime = System.currentTimeMillis();
+		System.out.println("count " + count);
+		System.out.println(stopTime - startTime);
+	}
+
+}

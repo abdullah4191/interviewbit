@@ -1,0 +1,37 @@
+package codeScratch;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class ArrayRotated {
+	public int findMin(final List<Integer> a) {
+		int low = 0, high = a.size() - 1;
+		while (low <= high) {
+			if (a.get(low) <= a.get(high))
+				return a.get(low);
+		}
+
+		int mid = low + (low - high) / 2;
+		int next = (mid + 1) % a.size(), prev = (mid - 1) % a.size();
+		if (a.get(mid) <= a.get(next) && a.get(mid) <= a.get(prev)) {
+			return mid;
+		}
+
+		else if (a.get(mid) <= a.get(high)) {
+			high = mid - 1;
+		} else if (a.get(mid) >= a.get(low)) {
+			low = mid + 1;
+		}
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		ArrayRotated instance = new ArrayRotated();
+		int[] arr = { 5, 7, 7, 8, 8, 10 };
+		// int[] arr = { 1 };
+		System.out.println(instance.findMin(IntStream.of(arr).boxed().collect(Collectors.toList())));
+
+	}
+
+}

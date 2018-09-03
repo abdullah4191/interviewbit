@@ -1,0 +1,29 @@
+package codeScratch;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class TextJustification {
+
+	public static String[] justify(String[] words, final int maxWidth) {
+		List<String> result = new LinkedList<String>();
+		String line = "";
+		for (String word : words) {
+			if (line.length() >= maxWidth)
+				result.add(line);
+		}
+
+		return (String[]) result.toArray();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] words = { "This", "is", "an", "example", "of", "text", "justification." };
+		String[] result = justify(words, 16);
+		for (String s : result) {
+			System.out.println(s);
+		}
+
+	}
+
+}

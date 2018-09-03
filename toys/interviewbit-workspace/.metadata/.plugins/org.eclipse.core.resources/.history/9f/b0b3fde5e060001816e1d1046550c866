@@ -1,0 +1,22 @@
+package codeScratch;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class ArrayRotated {
+	public int findMin(final List<Integer> a) {
+		int min = -1;
+
+		return min;
+	}
+
+	public static void main(String[] args) {
+		ArrayRotated instance = new ArrayRotated();
+		int[] arr = { 5, 7, 7, 8, 8, 10 };
+		// int[] arr = { 1 };
+		System.out.println(instance.findMin(IntStream.of(arr).boxed().collect(Collectors.toList())));
+
+	}
+
+}

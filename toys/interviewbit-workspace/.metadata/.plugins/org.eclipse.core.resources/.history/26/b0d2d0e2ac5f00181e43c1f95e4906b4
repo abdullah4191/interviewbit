@@ -1,0 +1,18 @@
+package codeScratch;
+
+public class SqrtSolution {
+	
+	public int sqrt(int a) {
+		for(int i=1;i<a/2;i++){
+	        if(a/i==i)return i;
+	    }
+		return 1;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SqrtSolution instance = new SqrtSolution();
+		System.out.println(instance.sqrt(111));
+	}
+
+}

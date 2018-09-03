@@ -1,0 +1,12 @@
+package codeScratch;
+
+public class LengthOfLastWord {
+	public int get(String input) {
+		return 0;
+	}
+	public static void main(String[] args) {
+String input = "foo baar";		
+		System.out.println(get(input));
+	}
+
+}
