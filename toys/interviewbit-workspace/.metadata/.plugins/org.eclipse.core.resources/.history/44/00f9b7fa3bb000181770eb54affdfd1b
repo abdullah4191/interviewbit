@@ -1,0 +1,16 @@
+package codeScratch;
+
+import java.util.Scanner;
+
+public class RomanToDicimal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int input = 0;
+		Scanner scanner = new Scanner(System.in);
+		input = scanner.nextInt();
+		scanner.close();
+		System.out.println(input);
+	}
+
+}

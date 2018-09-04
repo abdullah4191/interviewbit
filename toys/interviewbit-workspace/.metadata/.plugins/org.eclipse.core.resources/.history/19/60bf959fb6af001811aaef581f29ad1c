@@ -1,0 +1,62 @@
+package codeScratch;
+
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
+public class ZigzagString {
+
+	public static void zigzag(final String input, final int n) {
+		StringBuilder sb = new StringBuilder();
+		int pad = 0;
+		char[] chars = input.toCharArray();
+		for (int k = 0; k < chars.length; k++) {
+			for (int i = 0; i < chars.length; i += 2) {
+				sb.append(chars[i]);
+				sb = addPadding(sb, 2);
+			}
+			System.out.println(sb.toString());
+		}
+
+	}
+
+	private static StringBuilder addPadding(final StringBuilder sb, int count) {
+		while (count-- >= 0) {
+			sb.append(" ");
+		}
+		return sb;
+	}
+
+	public static void zigzag2(final String input, final int n) {
+		System.out.println(input.length());
+		StringBuilder sb = new StringBuilder();
+		char[][] chars = new char[input.length() + 1][n];
+		int index = 0;
+		int i = 0;
+		int col = 0;
+		while (index < input.length()) {
+			for (int j = 0; j < input.length() / n - 1 && index < input.length(); j++) {
+				System.out.println(input.charAt(index) + " ,i: " + i % n + " ,j: " + j);
+
+				chars[col][i++ % n] = input.charAt(index++);
+
+			}
+			col++;
+		}
+		for (i = 0; i < input.length() / n; i++) {
+			for (int j = 0; j < n; j++) {
+				sb.append(chars[i][j]);
+				System.out.print(chars[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println(sb.toString());
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String input = "GEEKSFORGEEKS";// "ABCDEFGH";
+		zigzag2(input, 3);
+
+	}
+
+}

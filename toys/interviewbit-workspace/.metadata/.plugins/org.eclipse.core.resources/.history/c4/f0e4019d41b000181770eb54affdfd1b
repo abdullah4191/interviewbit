@@ -1,0 +1,53 @@
+package codeScratch;
+
+import java.util.Scanner;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.security.InvalidParameterException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class RomanToDicimal {
+
+	public static NavigableMap<Integer, String> table;
+
+	static {
+		NavigableMap<Integer, String> conversionTable = new TreeMap<Integer, String>();
+
+		// I V X L C D M
+		// 1 5 10 50 100 500 1,000
+		conversionTable.put(1, "I");
+		conversionTable.put(5, "V");
+		conversionTable.put(10, "X");
+		conversionTable.put(50, "L");
+		conversionTable.put(100, "C");
+		conversionTable.put(500, "D");
+		conversionTable.put(1000, "M");
+		table = Collections.unmodifiableNavigableMap(conversionTable);
+	}
+
+	public static String convert(int number) throws InvalidParameterException {
+		if (number == 0)
+			throw new InvalidParameterException();
+
+		table.floorEntry(number);
+		return "";
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int input = 0;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(scanner.hasNextInt());
+		if (scanner.hasNextInt())
+			input = scanner.nextInt();
+		scanner.close();
+		System.out.println(input);
+		System.out.println(convert(input));
+		table.entrySet().stream().forEach(e -> System.out.println(e.getKey() + " " + e.getValue()));
+	}
+
+}
